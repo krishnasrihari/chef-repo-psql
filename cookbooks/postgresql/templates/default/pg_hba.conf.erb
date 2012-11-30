@@ -1,10 +1,7 @@
-# PostgreSQL Client Authentication Configuration File
-# This file was automatically generated and dropped off by Chef!
-# Please refer to the PostgreSQL documentation for details on
-# configuration settings.
+# Database administrative login by UNIX sockets
+local   all         postgres                          ident
 
 # TYPE  DATABASE    USER        CIDR-ADDRESS          METHOD
-<% node['postgresql']['pg_hba'].each do |auth| -%>
-<%= auth[:type] %>  <%= auth[:db] %>  <%= auth[:user] %>  <%= auth[:addr] %>  <%= auth[:method] %>
-<% end -%>
-
+local   all         all                               md5
+host    all         all         127.0.0.1/32          md5
+host    all         all         ::1/128               md5
